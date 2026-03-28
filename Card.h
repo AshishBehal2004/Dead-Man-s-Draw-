@@ -14,7 +14,6 @@ public:
     };
     const CardType& type() const;
 
-
     virtual std::string str() const = 0;
 
     virtual void play(Game &game, Player &player) = 0;
