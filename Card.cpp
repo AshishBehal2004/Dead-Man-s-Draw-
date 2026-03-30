@@ -7,12 +7,18 @@
 
 typedef std::vector<Card*> CardCollection;
 
-enum CardType {
-    Cannon, Chest, Key, Anchor, Sword, Hook, Oracle, Map, Mermaid, Kraken
-};
+Card::CardType cannon = Card::CardType::Cannon;
+Card::CardType chest = Card::CardType::Chest;
+Card::CardType anchor = Card::CardType::Anchor;
+Card::CardType sword = Card::CardType::Sword;
+Card::CardType hook = Card::CardType::Hook;
+Card::CardType oracle = Card::CardType::Oracle;
+Card::CardType map = Card::CardType::Map;
+Card::CardType mermaid = Card::CardType::Mermaid;
+Card::CardType kraken = Card::CardType::Kraken;
 
 std::string str() {
-
+    return "";
 }
 
 void play(Game& game, Player& player) {

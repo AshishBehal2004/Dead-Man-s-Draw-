@@ -1,11 +1,9 @@
 #pragma once
 #include <string>
-
-#include "Player.h"
-#include "Game.h"
-
 #include <vector>
 
+class Game;
+class Player;
 class Card
 {
 public:
