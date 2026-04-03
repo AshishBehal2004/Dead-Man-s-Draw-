@@ -21,7 +21,7 @@ public:
     const Card::CardCollection& get_play_Area() const;  //reference
 
     void manage_cards();
-    void add_card();
+    void add_card(Card* card);
     void move_cards();
 
     bool playCard(Card* card, Game& game);

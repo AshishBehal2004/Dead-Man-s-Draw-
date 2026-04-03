@@ -20,6 +20,7 @@ public:
     virtual void willAddToBank(Game& game, Player& player) {}
 
     typedef std::vector<Card*> CardCollection;
+
 private:
     CardType _cardType;
 
