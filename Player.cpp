@@ -2,6 +2,7 @@
 #include "Card.h"
 #include "Game.h"
 #include <unordered_set>
+#include <iostream>
 
 Player::Player() : _current_total_score(0), _player_name("") {
     std::string names[] = { "Sam", "Billy", "Jen", "Bob", "Sally", "Joe", "Sue",
@@ -42,7 +43,6 @@ void Player::manage_cards() {
 
 void Player::add_card(Card* card) {
     _playArea.push_back(card);
-
 }
 
 // Is responsible for knowing if the player’s current play area is bust(i.e.there are two
@@ -50,7 +50,7 @@ void Player::add_card(Card* card) {
 bool Player::is_bust() {
     std::unordered_set<Card::CardType> cardType;
 
-    for (Card* card : get_play_Area()) {
+    for (Card* card : _playArea) {
         if (cardType.find(card->type()) != cardType.end()) { //when the set finds a duplciate
             return true;
         }
@@ -61,8 +61,24 @@ bool Player::is_bust() {
     return false;
 }
 
-std::string Player::print_playArea_Bank() {
+std::string Player::printBank() {
+    std::string result;
+    result += _player_name + "'s Bank: \n";
+    for (Card* card : _bank) {
+        result += card->str() + " ";
+    }
+    std::string stringScore = std::to_string(_current_total_score);
+    result += "\n| Score: " + stringScore;
+    return result;
+}
 
+std::string Player::print_playArea() {
+    std::string result;
+    result += _player_name + "'s Play Area: \n";
+    for (Card* card : _playArea) {
+        result += " " + card->str() + "\n";
+    }
+    return result;
 }
 
 void Player::move_cards() {

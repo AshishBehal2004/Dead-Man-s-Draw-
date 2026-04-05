@@ -26,7 +26,9 @@ public:
 
     bool playCard(Card* card, Game& game);
     bool is_bust();
-    std::string print_playArea_Bank();
+
+    std::string printBank();
+    std::string print_playArea();
 
     
 
