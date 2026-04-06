@@ -13,7 +13,7 @@ public:
     void end_game();
     std::string print_final_scores();
     void create_card_deck();
-    void shuffle_deck();
+    void shuffleDeck(Card::CardCollection& cards);
     void initialise_players();
     void control_turn();
     void draw_card();

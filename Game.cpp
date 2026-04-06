@@ -8,6 +8,11 @@
 #include "Map.h"
 #include "Mermaid.h"
 #include "Kraken.h"
+#include <algorithm>
+#include <random>
+
+#include <iostream>
+#include "game_title.h"
 
 Game::Game() {}
 
@@ -81,4 +86,42 @@ void Game::create_card_deck() {
             }
         }
     }
+}
+
+
+void Game::shuffleDeck(Card::CardCollection& cards) {
+    Card::CardCollection shuffleDeck{ cards.begin(), cards.end() };
+    std::shuffle(shuffleDeck.begin(), shuffleDeck.end(), std::mt19937{ std::random_device{}() });
+    std::copy(shuffleDeck.begin(), shuffleDeck.end(), cards.begin());
+}
+
+void Game::start_game() {
+    std::cout << GAME_TITLE;
+    std::cout << "Starting DeadMan's Draw++!\n";
+    std::cout << "--- Round " << _current_round << ", Turn " << _current_turn << " ---";
+    std::cout << _player1->get_player_name() << "'s turn.";
+    std::cout << _player1->printBank();
+
+}
+void Game::initialise_game() {
+
+}
+void Game::initialise_players() {
+
+}
+
+std::string Game::print_final_scores() {
+
+}
+
+void Game::control_turn() {
+
+}
+
+void Game::draw_card() {
+
+}
+
+void Game::end_game() {
+
 }
