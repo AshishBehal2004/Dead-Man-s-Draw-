@@ -3,6 +3,7 @@
 
 class Sword : public Card
 {
+public:
     Sword(int value);
     std::string str() const override;
     

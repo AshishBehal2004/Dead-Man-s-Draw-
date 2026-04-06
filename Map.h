@@ -3,6 +3,7 @@
 
 class Map : public Card
 {
+public:
     Map(int value);
     std::string str() const override;
 

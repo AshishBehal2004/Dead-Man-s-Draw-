@@ -1,5 +1,38 @@
 #pragma once
+
+#include "Card.h"
+#include "Player.h"
+
 class Game
 {
+public:
+    
+    Game();
+    void initialise_game();
+    void start_game();
+    void end_game();
+    std::string print_final_scores();
+    void create_card_deck();
+    void shuffle_deck();
+    void initialise_players();
+    void control_turn();
+    void draw_card();
+
+    int get_current_turn() const;
+    int get_current_round() const;
+    const Player* get_current_player() const;
+    const Card::CardCollection get_deck() const;
+    const Card::CardCollection get_discard_pile() const;
+
+private:
+    int _current_turn;
+    int _current_round;
+    Player* _current_player;
+    Player* _player1;
+    Player* _player2;
+    Card::CardCollection _deck;
+    Card::CardCollection _discardPile;
+
+
 };
 

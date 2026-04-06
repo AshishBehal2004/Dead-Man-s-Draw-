@@ -3,6 +3,7 @@
 
 class Kraken : public Card
 {
+public:
     Kraken(int value);
     std::string str() const override;
 

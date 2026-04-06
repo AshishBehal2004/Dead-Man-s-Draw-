@@ -3,6 +3,8 @@
 
 class Oracle : public Card
 {
+public:
+
     Oracle(int value);
     std::string str() const override;
 

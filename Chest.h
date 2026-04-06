@@ -2,6 +2,7 @@
 #include "Card.h"
 class Chest : public Card
 {
+public:
     Chest(int value);
     std::string str() const override;
 

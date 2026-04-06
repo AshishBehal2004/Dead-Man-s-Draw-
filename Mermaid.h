@@ -3,6 +3,7 @@
 
 class Mermaid : public Card
 {
+public:
     Mermaid(int value);
     std::string str() const override;
 

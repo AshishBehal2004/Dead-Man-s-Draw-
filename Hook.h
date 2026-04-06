@@ -3,6 +3,8 @@
 
 class Hook : public Card
 {
+public:
+
     Hook(int value);
     std::string str() const override;
 

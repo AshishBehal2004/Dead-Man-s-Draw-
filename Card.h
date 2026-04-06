@@ -9,7 +9,7 @@ class Card
 public:
 
     enum CardType {
-        Cannon, Chest, Key, Anchor, Sword, Hook, Oracle, Map, Mermaid, Kraken
+        Cannon, Chest, Key, Sword, Hook, Oracle, Map, Mermaid, Kraken
     };
     Card(CardType _cardType, int _value);
   
