@@ -1,5 +1,7 @@
 #include "Hook.h"
 
+Hook::Hook(int value) : Card(Card::CardType::Cannon, value) {}
+
 std::string Hook::str() const {
     return "";
 }

@@ -29,7 +29,7 @@ public:
 
     std::string printBank();
     std::string print_playArea();
-
+    void calculate_score();
     
 
 };

@@ -3,6 +3,8 @@
 
 class Cannon : public Card      
 {
+    Cannon(int value);
+
     std::string str() const override;
 
     void play(Game& game, Player& player) override;

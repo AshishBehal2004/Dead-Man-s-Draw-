@@ -1,5 +1,8 @@
 #include "Key.h"
 
+Key::Key(int value) : Card(Card::CardType::Cannon, value) {}
+
+
 std::string Key::str() const {
     return "";
 }

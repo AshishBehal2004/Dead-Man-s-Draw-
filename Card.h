@@ -7,9 +7,12 @@ class Player;
 class Card
 {
 public:
+
     enum CardType {
         Cannon, Chest, Key, Anchor, Sword, Hook, Oracle, Map, Mermaid, Kraken
     };
+    Card(CardType _cardType, int _value);
+  
 
     virtual std::string str() const = 0;
 
@@ -20,9 +23,11 @@ public:
     virtual void willAddToBank(Game& game, Player& player) {}
 
     typedef std::vector<Card*> CardCollection;
-
+    
+    int get_value() const;
 private:
     CardType _cardType;
+    int _value;
 
 };
 

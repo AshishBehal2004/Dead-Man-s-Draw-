@@ -3,6 +3,7 @@
 #include "Game.h"
 #include <unordered_set>
 #include <iostream>
+#include <map>
 
 Player::Player() : _current_total_score(0), _player_name("") {
     std::string names[] = { "Sam", "Billy", "Jen", "Bob", "Sally", "Joe", "Sue",
@@ -86,4 +87,21 @@ void Player::move_cards() {
         _bank.push_back(card);
     }
     _playArea.clear();
+}
+
+void Player::calculate_score() {
+
+    std::map<Card::CardType, int > S;
+    for (Card* card : _bank ) {
+        Card::CardType t = card->type();
+
+        if (S[t] < card->get_value()) {
+            S[t] = card->get_value();
+        }
+    }
+    int total = 0;
+    for (auto eachPair : S) {
+        total = total + eachPair.second;
+    }
+    _current_total_score = total;
 }
