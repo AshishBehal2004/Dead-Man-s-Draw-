@@ -4,7 +4,7 @@ Chest::Chest(int value) : Card(Card::CardType::Cannon, value) {}
 
 
 std::string Chest::str() const {
-    return "";
+    return "Chest(" + std::to_string(get_value()) + ")";
 }
 
 void Chest::play(Game& game, Player& player) {

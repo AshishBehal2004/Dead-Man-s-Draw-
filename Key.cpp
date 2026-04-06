@@ -4,7 +4,7 @@ Key::Key(int value) : Card(Card::CardType::Cannon, value) {}
 
 
 std::string Key::str() const {
-    return "";
+    return "Key(" + std::to_string(get_value()) + ")";
 }
 
 void Key::play(Game& game, Player& player) {
