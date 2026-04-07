@@ -97,25 +97,25 @@ void Game::shuffleDeck(Card::CardCollection& cards) {
 
 void Game::start_game() {
     std::cout << GAME_TITLE;
+    initialise_game();
     std::cout << "Starting DeadMan's Draw++!\n";
-    std::cout << "--- Round " << _current_round << ", Turn " << _current_turn << " ---";
-    std::cout << _player1->get_player_name() << "'s turn.";
-    std::cout << _player1->printBank();
-
+    control_turn();
 }
+
 void Game::initialise_game() {
-
-}
-void Game::initialise_players() {
-
+    initialise_players();
+    create_card_deck();
+    shuffleDeck(_deck);
 }
 
 std::string Game::print_final_scores() {
-
+    return "";
 }
 
 void Game::control_turn() {
-
+    std::cout << "--- Round " << _current_round << ", Turn " << _current_turn << " ---";
+    std::cout << _player1->get_player_name() << "'s turn.";
+    std::cout << _player1->printBank();
 }
 
 void Game::draw_card() {
