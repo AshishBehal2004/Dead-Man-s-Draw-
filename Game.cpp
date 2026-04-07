@@ -100,6 +100,7 @@ void Game::start_game() {
     initialise_game();
     std::cout << "Starting DeadMan's Draw++!\n";
     control_turn();
+    print_final_scores();
 }
 
 void Game::initialise_game() {
@@ -109,7 +110,13 @@ void Game::initialise_game() {
 }
 
 std::string Game::print_final_scores() {
-    return "";
+    std::string final_score;
+
+    final_score =  "--- Game Over ---\n";
+    final_score += _player1->printBank() + "\n";
+    final_score += _player2->printBank() + "\n";
+    final_score += end_game();
+    return final_score;
 }
 
 void Game::switch_player() {
@@ -126,7 +133,8 @@ void Game::control_turn() {
         std::cout << "--- Round " << _current_round << ", Turn " << _current_turn << " ---";
         std::cout << _current_player->get_player_name() << "'s turn.";
         std::cout << _current_player->printBank();
-        draw_card();
+        Card* drawnCard = draw_card();
+        _current_player->playCard(drawnCard, *this);
         
         if (_current_player->is_bust() ) {
             moveCards_to_discard_pile();
@@ -137,7 +145,8 @@ void Game::control_turn() {
             std::cout << "Draw again? (y/n):";
             std::cin >> userInput;
             while (userInput == "y") {
-                draw_card();
+                Card* drawnCard = draw_card();
+                _current_player->playCard(drawnCard, *this);
                 if (_current_player->is_bust()) {
                     moveCards_to_discard_pile();
                     switch_player();
@@ -163,10 +172,24 @@ void Game::moveCards_to_discard_pile() {
 }
 
 
-void Game::draw_card() {
-
+Card* Game::draw_card(){
+    Card* card = _deck.front();
+    _deck.erase(_deck.begin());
+    return card;
 }
 
-void Game::end_game() {
+std::string Game::end_game() {
+    _player1->calculate_score();
+    _player2->calculate_score();
 
+    int player1Score = _player1->get_current_total_score();
+    int player2Score = _player2->get_current_total_score();
+    std::string win_result;
+    if (player1Score < player2Score) {
+        win_result = _player2->get_player_name() + "wins!";
+    }
+    else {
+        win_result =  _player1->get_player_name() + "wins!";
+    }
+    return win_result;
 }
