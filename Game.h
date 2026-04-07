@@ -23,6 +23,8 @@ public:
     const Player* get_current_player() const;
     const Card::CardCollection get_deck() const;
     const Card::CardCollection get_discard_pile() const;
+    void moveCards_to_discard_pile();
+    void switch_player();
 
 private:
     int _current_turn;

@@ -28,7 +28,7 @@ const Card::CardCollection& Player::get_play_Area() const{  //reference
 }
 
 bool Player::playCard(Card* card, Game& game) {
-    _playArea.push_back(card);
+    add_card(card);
     if (is_bust()) {
         return true;
     }
@@ -38,8 +38,8 @@ bool Player::playCard(Card* card, Game& game) {
     }
 }
 
-void Player::manage_cards() {
-
+void Player::clear_playArea() {
+    _playArea.clear();
 }
 
 void Player::add_card(Card* card) {

@@ -112,11 +112,56 @@ std::string Game::print_final_scores() {
     return "";
 }
 
-void Game::control_turn() {
-    std::cout << "--- Round " << _current_round << ", Turn " << _current_turn << " ---";
-    std::cout << _player1->get_player_name() << "'s turn.";
-    std::cout << _player1->printBank();
+void Game::switch_player() {
+    if (_current_player == _player1) {
+        _current_player = _player2;
+    }
+    else {
+        _current_player = _player1;
+    }
 }
+void Game::control_turn() {
+    _current_player = _player1;
+    while ( !_deck.empty() && _current_turn < 20) {
+        std::cout << "--- Round " << _current_round << ", Turn " << _current_turn << " ---";
+        std::cout << _current_player->get_player_name() << "'s turn.";
+        std::cout << _current_player->printBank();
+        draw_card();
+        
+        if (_current_player->is_bust() ) {
+            moveCards_to_discard_pile();
+            switch_player();
+        }
+        else {
+            std::string userInput;
+            std::cout << "Draw again? (y/n):";
+            std::cin >> userInput;
+            while (userInput == "y") {
+                draw_card();
+                if (_current_player->is_bust()) {
+                    moveCards_to_discard_pile();
+                    switch_player();
+                    break;
+                }
+                std::cout << "Draw again? (y/n):";
+                std::cin >> userInput;
+            }
+            if (userInput == "n") {
+                _current_player->move_cards();
+                switch_player();
+            }
+        }
+        _current_turn++;
+    }
+}
+
+void Game::moveCards_to_discard_pile() {
+    for (Card* cards : _current_player->get_play_Area()) {
+        _discardPile.push_back(cards);
+    }
+    _current_player->clear_playArea();
+}
+
 
 void Game::draw_card() {
 

@@ -20,7 +20,7 @@ public:
     const Card::CardCollection& get_bank() const;  // reference
     const Card::CardCollection& get_play_Area() const;  //reference
 
-    void manage_cards();
+    void clear_playArea();
     void add_card(Card* card);
     void move_cards();
 
