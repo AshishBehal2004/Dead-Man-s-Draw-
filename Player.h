@@ -30,6 +30,7 @@ public:
     std::string printBank();
     std::string print_playArea();
     void calculate_score();
+    void removeCard_fromBank(Card* card);
     
 
 };

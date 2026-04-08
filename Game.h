@@ -16,13 +16,13 @@ public:
     void shuffleDeck(Card::CardCollection& cards);
     void initialise_players();
     void control_turn();
-    
 
     int get_current_turn() const;
     int get_current_round() const;
     const Player* get_current_player() const;
+    Player* get_other_player() ;
     const Card::CardCollection get_deck() const;
-    const Card::CardCollection get_discard_pile() const;
+    Card::CardCollection& get_discard_pile();
     void moveCards_to_discard_pile();
     void switch_player();
     Card* draw_card();

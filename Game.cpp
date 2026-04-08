@@ -27,10 +27,19 @@ const Player* Game::get_current_player() const {
     return _current_player;
 }
 
+Player* Game::get_other_player()  {
+    if (_current_player == _player1) {
+        return _player2;
+    }
+    else {
+        return _player1;
+
+    }
+}
 const Card::CardCollection Game::get_deck() const {
     return _deck;
 }
-const Card::CardCollection Game::get_discard_pile() const {
+Card::CardCollection& Game::get_discard_pile() {
     return _discardPile;
 }
 

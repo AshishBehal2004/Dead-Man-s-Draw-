@@ -105,3 +105,9 @@ void Player::calculate_score() {
     }
     _current_total_score = total;
 }
+
+void Player::removeCard_fromBank(Card* card) {
+    auto card_index = find(_bank.begin(), _bank.end(), card);
+
+    _bank.erase(card_index);
+}
