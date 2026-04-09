@@ -1,4 +1,5 @@
 #include "Mermaid.h"
+#include <iostream>
 
 Mermaid::Mermaid(int value) : Card(Card::CardType::Cannon, value) {}
 
@@ -7,5 +8,5 @@ std::string Mermaid::str() const {
 }
 
 void Mermaid::play(Game& game, Player& player) {
-
+    std::cout << "No effect but Mermaids are worth more.";
 }

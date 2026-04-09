@@ -165,7 +165,7 @@ void Game::control_turn() {
                 std::cin >> userInput;
             }
             if (userInput == "n") {
-                _current_player->move_cards();
+                _current_player->move_cards(*this);
                 switch_player();
             }
         }

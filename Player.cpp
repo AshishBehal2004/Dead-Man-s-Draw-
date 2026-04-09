@@ -82,8 +82,9 @@ std::string Player::print_playArea() {
     return result;
 }
 
-void Player::move_cards() {
+void Player::move_cards(Game& game) {
     for (Card* card : _playArea) {
+        card->willAddToBank(game, *this);
         _bank.push_back(card);
     }
     _playArea.clear();
@@ -111,3 +112,4 @@ void Player::removeCard_fromBank(Card* card) {
 
     _bank.erase(card_index);
 }
+

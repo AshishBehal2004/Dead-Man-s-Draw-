@@ -1,6 +1,6 @@
 #include "Key.h"
-
-Key::Key(int value) : Card(Card::CardType::Cannon, value) {}
+#include <iostream>
+Key::Key(int value) : Card(Card::CardType::Key, value) {}
 
 
 std::string Key::str() const {
@@ -8,9 +8,6 @@ std::string Key::str() const {
 }
 
 void Key::play(Game& game, Player& player) {
-
-}
-
-void Key::willAddToBank(Game& game, Player& player) {
+    std::cout << "No immediate effect. If banked with a Key card, draw as many bonus cards from the Discard pile as you moved into your Bank.";
 
 }

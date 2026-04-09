@@ -1,7 +1,7 @@
 #include "Sword.h"
+#include <iostream>
 
-
-Sword::Sword(int value) : Card(Card::CardType::Cannon, value) {}
+Sword::Sword(int value) : Card(Card::CardType::Sword, value) {}
 
 std::string Sword::str() const {
 

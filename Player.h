@@ -22,7 +22,7 @@ public:
 
     void clear_playArea();
     void add_card(Card* card);
-    void move_cards();
+    void move_cards(Game& game);
 
     bool playCard(Card* card, Game& game);
     bool is_bust();
