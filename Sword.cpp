@@ -18,7 +18,7 @@ void Sword::play(Game& game, Player& player) {
     
     Player* other_player = game.get_other_player();
     if (other_player->get_bank().empty()) {
-        std::cout << "No cards in other player's Bank. Play continues.";
+        std::cout << "   No cards in other player's Bank. Play continues.";
     }
     else {
         std::cout << "Steal the top card of any suit from the other player's Bank into your Play Area:\n";

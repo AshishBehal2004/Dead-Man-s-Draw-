@@ -107,7 +107,7 @@ void Game::shuffleDeck(Card::CardCollection& cards) {
 void Game::start_game() {
     std::cout << GAME_TITLE;
     initialise_game();
-    std::cout << "Starting DeadMan's Draw++!\n";
+    std::cout << "\nStarting DeadMan's Draw++!\n";
     control_turn();
     print_final_scores();
 }
@@ -139,12 +139,13 @@ void Game::switch_player() {
 void Game::control_turn() {
     _current_player = _player1;
     while ( !_deck.empty() && _current_turn < 20) {
-        std::cout << "--- Round " << _current_round << ", Turn " << _current_turn << " ---";
-        std::cout << _current_player->get_player_name() << "'s turn.";
+        std::cout << "\n--- Round " << _current_round << ", Turn " << _current_turn << " ---\n";
+        std::cout << _current_player->get_player_name() << "'s turn.\n";
         std::cout << _current_player->printBank();
+        std::cout << "\n" << _current_player->get_player_name() << "draws a \n\n";
         Card* drawnCard = draw_card();
         _current_player->playCard(drawnCard, *this);
-        
+       
         if (_current_player->is_bust() ) {
             moveCards_to_discard_pile();
             switch_player();

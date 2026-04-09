@@ -28,8 +28,8 @@ public:
     Card* draw_card();
 
 private:
-    int _current_turn;
-    int _current_round;
+    int _current_turn = 1;
+    int _current_round = 1;
     Player* _current_player;
     Player* _player1;
     Player* _player2;

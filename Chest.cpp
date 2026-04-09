@@ -10,7 +10,7 @@ std::string Chest::str() const {
 }
 
 void Chest::play(Game& game, Player& player) {
-    std::cout << "No immediate effect. If banked with a Key card, draw as many bonus cards from the Discard pile as you moved into your Bank.";
+    std::cout << "\nNo immediate effect. If banked with a Key card, draw as many bonus cards from the Discard pile as you moved into your Bank.";
 }
 
 void Chest::willAddToBank(Game& game, Player& player) {
@@ -25,7 +25,7 @@ void Chest::willAddToBank(Game& game, Player& player) {
             
             for (int i = 0; i < totalCards; i++) {
                 if (discardPile.empty()) {
-                    std::cout << "No cards in the discard pile. Play continues";
+                    std::cout << "   No cards in the discard pile. Play continues";
                 }
                 else {
                     player.add_card(discardPile.front());

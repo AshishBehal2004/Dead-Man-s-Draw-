@@ -3,12 +3,15 @@
 
 #include <iostream>
 //#include "game_title.h"
+#include "Game.h"
 int main()
 {
-    std::cout << "Hello World!\n";
+
     std::string GAME_TITLE_H;
 
     std::cout << GAME_TITLE_H;
 
+    Game game1;
+    game1.start_game();
 }
 

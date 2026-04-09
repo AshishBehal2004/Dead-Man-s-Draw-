@@ -17,7 +17,7 @@ void Cannon::play(Game& game, Player& player) {
     Card::CardCollection& game_DiscardPile = game.get_discard_pile();
 
     if (otherPlayer_Bank.empty()) {
-        std::cout << "No cards in the other player's bank. Play continues";
+        std::cout << "   No cards in the other player's bank. Play continues";
       
     }
     else {

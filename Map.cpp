@@ -14,11 +14,11 @@ void Map::play(Game& game, Player& player) {
     std::vector<Card*> cardsFrom_discardPile;
     int userChoice;
     if (game.get_discard_pile().empty()) {
-        std::cout << "No cards in the deck. Play continues.";
+        std::cout << "   No cards in the deck. Play continues.";
 
     }
     else {
-        std::cout << "Draw 3 cards from the discard and pick one to add to the play area: ";
+        std::cout << "Draw 3 cards from the discard and pick one to add to the play area: \n";
         for (int i = 0; i < 3; i++) {
             if (game.get_discard_pile().empty()) {
                 break;

@@ -16,7 +16,7 @@ void Hook::play(Game& game, Player& player) {
     std::map<int, Card*> bank_cards;
 
     if (player.get_bank().empty()) {
-        std::cout << "No cards in your Bank. Play continues.";
+        std::cout << "   No cards in your Bank. Play continues.";
     }
     else {
         std::cout << "Select a highest-value card from any of the suits in your Bank:\n";

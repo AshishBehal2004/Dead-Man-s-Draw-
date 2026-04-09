@@ -12,13 +12,13 @@ std::string Oracle::str() const {
 void Oracle::play(Game& game, Player& player) {
 
     if (game.get_deck().empty()) {
-        std::cout << "No cards in the deck. Play continues.";
+        std::cout << "   No cards in the deck. Play continues.";
 
     }
     else {
-        std::cout << "The Oracle sees a " << game.get_deck().front()->str() << "\n";
+        std::cout << "\nThe Oracle sees a " << game.get_deck().front()->str() << "\n";
         std::cout << player.print_playArea();
-        std::cout << "Draw again? (y/n): ";
+        std::cout << "\nDraw again? (y/n): ";
         std::string userChoice;
         std::cin >> userChoice;
 

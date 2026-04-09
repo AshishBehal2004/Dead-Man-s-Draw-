@@ -64,12 +64,12 @@ bool Player::is_bust() {
 
 std::string Player::printBank() {
     std::string result;
-    result += _player_name + "'s Bank: \n";
+    result += "\n" + _player_name + "'s Bank: \n";
     for (Card* card : _bank) {
         result += card->str() + " ";
     }
     std::string stringScore = std::to_string(_current_total_score);
-    result += "\n| Score: " + stringScore;
+    result += "\n| Score: " + stringScore +"\n";
     return result;
 }
 
