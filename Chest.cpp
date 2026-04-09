@@ -14,8 +14,6 @@ void Chest::play(Game& game, Player& player) {
 }
 
 void Chest::willAddToBank(Game& game, Player& player) {
-    Player& current_player = player;
-    
     
     Card::CardCollection player_playArea = player.get_play_Area();
     std::string cardsadded;
