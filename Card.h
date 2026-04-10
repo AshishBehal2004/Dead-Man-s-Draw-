@@ -18,6 +18,9 @@ public:
 
     const CardType& type() const;
 
+    /*!
+        plays the card ability, this method is overriden by its child classess
+    */
     virtual void play(Game &game, Player &player) = 0;
 
     /*!

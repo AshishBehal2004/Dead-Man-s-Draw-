@@ -15,7 +15,6 @@ void Map::play(Game& game, Player& player) {
     int userChoice;
     if (game.get_discard_pile().empty()) {
         std::cout << "   No cards in the deck. Play continues.";
-
     }
     else {
         std::cout << "Draw 3 cards from the discard and pick one to add to the play area: \n";

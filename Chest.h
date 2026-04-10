@@ -13,7 +13,7 @@ public:
     std::string str() const override;
 
     /*!
-        displays the message in the output saying the message as it was mentioned in the spec
+       plays the card ability
     */
     void play(Game& game, Player& player) override;
 
