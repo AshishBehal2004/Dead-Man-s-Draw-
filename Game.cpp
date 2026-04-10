@@ -49,6 +49,15 @@ void Game::initialise_players() {
     _player2 = new Player();
 }
 
+/*!
+    loops over 9 times(9 different suits) 
+    then first handles the specif card (mermaid)
+    using switch if the card is 7 meaning mermaid (since we are told to use enum, so 
+    i am iterating in order and then checkin if i = 7 (meaning the 7th CardType inside the enum is Mermaid)
+    then create the 6 difffernt mermaid cards with value ranging from 4 to 0 as mentioned in the spec
+    for rest of the card suits do the similar logic:
+    but create 6 card values ranging from 2 to 7
+*/
 void Game::create_card_deck() {
     
     for (int i = 0; i < 9; i++) {
@@ -67,7 +76,7 @@ void Game::create_card_deck() {
                 switch (i) {
 
                 case(0):
-                    // create 
+                    
                     _deck.push_back(new Cannon(j));
                     break;
                 case(1):
@@ -113,7 +122,7 @@ void Game::start_game() {
 }
 
 void Game::initialise_game() {
-    initialise_players();
+    initialise_players(); 
     create_card_deck();
     shuffleDeck(_deck);
 }
@@ -137,6 +146,22 @@ void Game::switch_player() {
         _current_player = _player1;
     }
 }
+
+/*!
+    loops until the following conditions: until deck is not empty or until it has reached 20 turns
+    several print satements showing the current round and turn, the current player name, and the cards in his bank
+    then drawing a card (by using draw_card() ) from the deck
+    then printing which card the player has drawn from the deck
+    then the card which is drawn by player is played (using playCard()) which executes that card's ability
+    and then it prints the player's playArea
+    and checks whtether current player is busted( meaining it has two cards of the same suit)
+    if yes then it moves the all the cards in the player's playArea into the discardPile and switches the turn to next player(using switch_player())
+    in the else logic opposit happens meaning the player is not busted
+    player is prompted for input and types y or n
+    then if he has type y, checks for the condition if in case deck is empty when player is trying to draw again, then breaks
+    otherwise draws the cards, along with message saying which card is drawn and plays its ability, and if typed n , the player turn is switched to next player
+    and prints the final score 
+    */
 void Game::control_turn() {
     _current_player = _player1;
     while ( !_deck.empty() && _current_turn <= 20) {
@@ -171,7 +196,6 @@ void Game::control_turn() {
                 }
                 std::cout << "Draw again? (y/n):";
                 std::cin >> userInput;
-                
             }
             if (userInput == "n") {
                 _current_player->move_cards(*this);
@@ -180,9 +204,9 @@ void Game::control_turn() {
         }
         _current_turn++;
     }
-
     print_final_scores();
 }
+
 
 void Game::moveCards_to_discard_pile() {
     for (Card* cards : _current_player->get_play_Area()) {

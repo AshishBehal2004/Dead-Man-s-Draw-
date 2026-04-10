@@ -27,6 +27,6 @@ void Oracle::play(Game& game, Player& player) {
             Card* topCardDrawn_fromDeck = game.draw_card();
             player.playCard(topCardDrawn_fromDeck, game);
         }
-    }
+       }
     
 }
