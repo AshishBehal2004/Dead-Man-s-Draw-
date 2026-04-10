@@ -109,7 +109,7 @@ void Game::start_game() {
     initialise_game();
     std::cout << "\nStarting DeadMan's Draw++!\n";
     control_turn();
-    print_final_scores();
+    std::cout << print_final_scores();
 }
 
 void Game::initialise_game() {
@@ -120,8 +120,9 @@ void Game::initialise_game() {
 
 std::string Game::print_final_scores() {
     std::string final_score;
-
-    final_score =  "--- Game Over ---\n";
+    _player1->calculate_score();
+    _player2->calculate_score();
+    final_score +=  "--- Game Over ---\n";
     final_score += _player1->printBank() + "\n";
     final_score += _player2->printBank() + "\n";
     final_score += end_game();
@@ -138,24 +139,30 @@ void Game::switch_player() {
 }
 void Game::control_turn() {
     _current_player = _player1;
-    while ( !_deck.empty() && _current_turn < 20) {
+    while ( !_deck.empty() && _current_turn <= 20) {
         std::cout << "\n--- Round " << _current_round << ", Turn " << _current_turn << " ---\n";
         std::cout << _current_player->get_player_name() << "'s turn.\n";
         std::cout << _current_player->printBank();
-        std::cout << "\n" << _current_player->get_player_name() << "draws a \n\n";
         Card* drawnCard = draw_card();
+        std::cout << _current_player->get_player_name() << " draws a " << drawnCard->str()  << "\n";
         _current_player->playCard(drawnCard, *this);
        
+        std::cout << "\n" << _current_player->print_playArea();
         if (_current_player->is_bust() ) {
             moveCards_to_discard_pile();
             switch_player();
         }
         else {
             std::string userInput;
-            std::cout << "Draw again? (y/n):";
+            std::cout << "\nDraw again? (y/n):";
             std::cin >> userInput;
             while (userInput == "y") {
+                if (_deck.empty()) {
+                    std::cout << "   No cards in the deck. Play continues.";
+                    break;
+                }
                 Card* drawnCard = draw_card();
+                std::cout << _current_player->get_player_name() << " draws a " << drawnCard->str() << "\n";
                 _current_player->playCard(drawnCard, *this);
                 if (_current_player->is_bust()) {
                     moveCards_to_discard_pile();
@@ -164,6 +171,7 @@ void Game::control_turn() {
                 }
                 std::cout << "Draw again? (y/n):";
                 std::cin >> userInput;
+                
             }
             if (userInput == "n") {
                 _current_player->move_cards(*this);
@@ -172,6 +180,8 @@ void Game::control_turn() {
         }
         _current_turn++;
     }
+
+    print_final_scores();
 }
 
 void Game::moveCards_to_discard_pile() {
@@ -196,10 +206,10 @@ std::string Game::end_game() {
     int player2Score = _player2->get_current_total_score();
     std::string win_result;
     if (player1Score < player2Score) {
-        win_result = _player2->get_player_name() + "wins!";
+        win_result = _player2->get_player_name() + " wins!";
     }
     else {
-        win_result =  _player1->get_player_name() + "wins!";
+        win_result =  _player1->get_player_name() + " wins!";
     }
     return win_result;
 }

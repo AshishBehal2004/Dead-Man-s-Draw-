@@ -64,12 +64,12 @@ bool Player::is_bust() {
 
 std::string Player::printBank() {
     std::string result;
-    result += "\n" + _player_name + "'s Bank: \n";
+    result +=  _player_name + "'s Bank: \n";
     for (Card* card : _bank) {
-        result += card->str() + " ";
+        result += card->str() + "\n";
     }
     std::string stringScore = std::to_string(_current_total_score);
-    result += "\n| Score: " + stringScore +"\n";
+    result += "| Score: " + stringScore +"\n";
     return result;
 }
 
@@ -87,6 +87,7 @@ void Player::move_cards(Game& game) {
         card->willAddToBank(game, *this);
         _bank.push_back(card);
     }
+    calculate_score();
     _playArea.clear();
 }
 

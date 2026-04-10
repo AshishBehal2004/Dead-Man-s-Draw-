@@ -29,7 +29,7 @@ void Map::play(Game& game, Player& player) {
         
         for (int i = 0; i < cardsFrom_discardPile.size(); i++) {
             
-            std::cout << "(" << i+1 << ")" << cardsFrom_discardPile[i]->str() << "\n";
+            std::cout << "(" << i+1 << ") " << cardsFrom_discardPile[i]->str() << "\n";
         }
         std::cout << "Which card do you pick? ";
         std::cin >> userChoice;

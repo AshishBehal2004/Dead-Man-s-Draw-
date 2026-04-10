@@ -12,7 +12,6 @@ std::string Hook::str() const {
 
 void Hook::play(Game& game, Player& player) {
 
-    
     std::map<int, Card*> bank_cards;
 
     if (player.get_bank().empty()) {
@@ -31,7 +30,7 @@ void Hook::play(Game& game, Player& player) {
         std::cout << "Which card do you pick? ";
         std::cin >> userChoice;
         if (userChoice >= 1 && userChoice <= options) {
-            player.add_card(bank_cards[userChoice]);
+            player.playCard(bank_cards[userChoice], game);
             player.removeCard_fromBank(bank_cards[userChoice]);
         }
     }

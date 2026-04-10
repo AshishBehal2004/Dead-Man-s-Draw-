@@ -33,7 +33,7 @@ void Sword::play(Game& game, Player& player) {
         std::cout << "Which card do you pick? ";
         std::cin >> userChoice;
         if (userChoice >= 1 && userChoice <= options) {
-            player.add_card(bank_cards[userChoice]);
+            player.playCard(bank_cards[userChoice], game);
             other_player->removeCard_fromBank(bank_cards[userChoice]);
         }
     }
